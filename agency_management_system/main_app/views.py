@@ -50,8 +50,8 @@ def manage_crews(request):
     crew_data = []
 
     for crew in ship_crews:
-         value = crew.to_dict()
-    crew_data.append(value)
+        value = crew.to_dict()
+        crew_data.append(value)
 
     data = {
             'ship_crews': crew_data, 
