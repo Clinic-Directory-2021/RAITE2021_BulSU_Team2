@@ -144,6 +144,74 @@ $("#editCrewForm").submit(function( event ) {
 
   }); 
 
+  $("#addShipForm").submit(function( event ) {
+    var formData = new FormData();
+
+    var files = $('#shipImage')[0].files[0];
+
+    formData.append('shipImage', files);
+    formData.append('fileName', files.name);
+    formData.append('shipName', $('#ship_name').val());
+    formData.append('ship_speed', $('#ship_speed').val());
+    formData.append('ship_destination', $('#ship_destination').val());
+    formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+    event.preventDefault();
+  console.log("1");
+
+    $.ajax({
+        type: "POST",
+        url: '/addShipFireBase/',
+        data: formData,
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if(data == 'Success'){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Added Crew Successfully',
+                  })
+            }
+            else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'This Position is Occupied',
+                  })
+            }
+        },
+        error: function(data){
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                })
+        },
+
+      });
+
+  }); 
+
+
+  $(function(){
+    $('#shipImage').change(function(){
+      var input = this;
+      var url = $(this).val();
+      var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
+      if (input.files && input.files[0]&& (ext == "png" || ext == "jpeg" || ext == "jpg")) 
+       {
+          var reader = new FileReader();
+
+          reader.onload = function (e) {
+             $('#previewShip').attr('src', e.target.result);
+          }
+         reader.readAsDataURL(input.files[0]);
+      }else
+      {
+        $('#previewShip').attr('src', '../static/images/map.jpg');
+      }
+      
+       });
+
+     });
 
 
 function toAddCrew(){

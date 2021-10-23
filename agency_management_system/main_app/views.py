@@ -45,7 +45,7 @@ def list_of_crews(request):
     
     return render(request,'list_of_crews.html',data)
 def manage_crews(request):
-    ship_crews = db.collection('ship_crews').get()
+    ship_crews = db.collection('ships').get()
 
     crew_data = []
 
@@ -54,7 +54,7 @@ def manage_crews(request):
         crew_data.append(value)
 
         data = {
-            'ship_crews': crew_data, 
+            'ships': crew_data, 
         }
     return render(request,'manage_crew.html', data)
 def add_crews(request):
@@ -205,7 +205,19 @@ def edit_crew(request):
 
         return render(request,'edit_crew.html', data)
 def list_of_ship(request):
-    return render(request,'list_of_ship.html')
+    ship_crews = db.collection('ship_crews').get()
+        
+    crew_data = []
+
+    for crew in ship_crews:
+         value = crew.to_dict()
+    crew_data.append(value)
+
+    data = {
+            'ship_crews': crew_data, 
+     }
+
+    return render(request,'list_of_ship.html', data)
 def manage_ship(request):
     return render(request,'manage_ship.html')
 def add_ship(request):
@@ -339,4 +351,33 @@ def editCrewPage(request):
             })
 
         doc_ref_limitation.update({rank: firestore.Increment(1)})
+        return HttpResponse('Success')
+
+def addShipFireBase(request):
+    if request.method == 'POST':
+        fileName = request.POST.get('fileName')
+        shipImage = request.FILES['crewImage']
+
+        shipName = request.POST.get('shipName')
+        ship_speed = request.POST.get('ship_speed')
+        ship_destination = request.POST.get('ship_destination')
+
+
+
+        img_file_directory = "/ship_images/"+ fileName
+
+        #upload product image
+        storage.child(img_file_directory).put(shipImage)
+
+
+        doc_ref = db.collection('ships').document()
+
+        doc_ref.set({
+            'ship_img_url' : storage.child(img_file_directory).get_url(),
+            'ship_img_directory' : img_file_directory,
+            'shipName': shipName,
+            'ship_speed': ship_speed,
+            'ship_destination': ship_destination,
+            })
+
         return HttpResponse('Success')

@@ -7,6 +7,7 @@
     data-rows-steps="5, 10"
     data-rows="5">
         <thead>
+            
             <tr class="bg-grayWhite fg-white">
                 <th class="fg-white">Ship Name</th>
                 <th class="fg-white">Photo</th>
@@ -16,14 +17,16 @@
             </tr>
             </thead>
             <tbody>
+                {% for ship in ships%}
                 <tr>
-                    <td>Ship Name</td>
-                    <td><img src="../static/images/idea.png" alt=""></td>
-                    <td>Ship Speed</td>
-                    <td>asdasdsdddasdas</td>
+                    <td>{{ship.shipName}}</td>
+                    <td><img src="{{ship.ship_img_url}}" alt=""></td>
+                    <td>{{ship.ship_speed}}</td>
+                    <td>{{ship.ship_destination}}</td>
                     <td><button class="button primary mif-eye icon" data-role="popover" data-popover-text="View"
                         data-popover-position="top" data-popover-hide="1000" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></button></td>
                 </tr>
+                {% endfor %}
             </tbody>
     </table>
 </div>

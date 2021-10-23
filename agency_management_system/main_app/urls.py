@@ -29,4 +29,5 @@ urlpatterns = [
     path('edit_ship/', views.edit_ship,name="edit_ship"),
     path('add_crews_firebase/', views.add_crews_firebase,name="add_crews_firebase"),
     path('editCrewPage/', views.editCrewPage,name="editCrewPage"),
+    path('addShipFireBase/', views.addShipFireBase,name="addShipFireBase"),
 ]
