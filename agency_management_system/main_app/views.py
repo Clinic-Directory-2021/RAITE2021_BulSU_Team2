@@ -87,19 +87,19 @@ def add_crews_firebase(request):
         for limitation in limitations:
             value = limitation.to_dict()
             if rank == 'master_captain':
-                if value['master_captain'] != '0':
+                if int(value['master_captain']) > 0:
                     return HttpResponse('Sorry Master Position Has already have A crew')
 
             if rank == 'chief_mate':
-                if value['chief_mate'] != '0':
+                if int(value['chief_mate']) > 0:
                     return HttpResponse('Sorry Master Position Has already have A crew')
 
             if rank == 'second_mate':
-                if value['second_mate'] != '0':
+                if int(value['second_mate']) > 0:
                     return HttpResponse('Sorry Master Position Has already have A crew')
 
             if rank == 'third_mate':
-                if value['third_mate'] != '0':
+                if int(value['third_mate']) > 0:
                     return HttpResponse('Sorry Master Position Has already have A crew')
 
             if rank == 'deck_cadet':
