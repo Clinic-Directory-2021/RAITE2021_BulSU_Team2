@@ -46,16 +46,16 @@ def list_of_crews(request):
     return render(request,'list_of_crews.html',data)
 def manage_crews(request):
     ship_crews = db.collection('ship_crews').get()
-
+        
     crew_data = []
 
     for crew in ship_crews:
-        value = crew.to_dict()
-        crew_data.append(value)
+         value = crew.to_dict()
+    crew_data.append(value)
 
-        data = {
-            'crew': crew_data, 
-        }
+    data = {
+            'ship_crews': crew_data, 
+     }
     return render(request,'manage_crew.html', data)
 def add_crews(request):
     return render(request,'add_crew.html')
