@@ -210,8 +210,8 @@ def list_of_ship(request):
     crew_data = []
 
     for crew in ship_crews:
-         value = crew.to_dict()
-    crew_data.append(value)
+        value = crew.to_dict()
+        crew_data.append(value)
 
     data = {
             'ships': crew_data, 
