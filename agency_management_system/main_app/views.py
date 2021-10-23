@@ -62,10 +62,10 @@ def add_crews_firebase(request):
         # register default crew and password to firebase auth
         user = auth.create_user_with_email_and_password(first_name+'@gmail.com', 'password')
 
-        # img_file_directory = user['localId']+"/crew_images/"+ fileName
+        img_file_directory = user['localId']+"/crew_images/"+ fileName
 
-        # #upload product image
-        # storage.child(img_file_directory).put(crewImage, user['localId'])
+        #upload product image
+        storage.child(img_file_directory).put(crewImage, user['localId'])
 
         doc_ref = db.collection('ship_crews').document(user['localId'])
 
@@ -82,17 +82,18 @@ def add_crews_firebase(request):
 
 
         doc_ref.set({
-            # 'crew_img_url' : storage.child(img_file_directory).get_url(user['localId']),
-            # 'crew_img_directory' : img_file_directory,
+            'crew_img_url' : storage.child(img_file_directory).get_url(user['localId']),
+            'crew_img_directory' : img_file_directory,
             'first_name': first_name,
             'middle_name': middle_name,
             'gender': gender,
             'age': age,
             'birthdate': birthdate,
+            'rank': rank,
             'crew_id': user['localId'],
             })
 
-        doc_ref_limitation.update({rank: firestore.Increment(1)})
+        # doc_ref_limitation.update({rank: firestore.Increment(1)})
         return HttpResponse('Success')
 
 def edit_crew(request):
