@@ -205,7 +205,7 @@ def edit_crew(request):
 
         return render(request,'edit_crew.html', data)
 def list_of_ship(request):
-    ship_crews = db.collection('ship_crews').get()
+    ship_crews = db.collection('ships').get()
         
     crew_data = []
 
@@ -214,7 +214,7 @@ def list_of_ship(request):
     crew_data.append(value)
 
     data = {
-            'ship_crews': crew_data, 
+            'ships': crew_data, 
      }
 
     return render(request,'list_of_ship.html', data)
