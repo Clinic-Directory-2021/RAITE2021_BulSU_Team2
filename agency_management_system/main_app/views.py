@@ -8,10 +8,13 @@ import pyrebase
 from django.http import HttpResponse
 
 config = {
-  "apiKey": "AIzaSyBfTREYKsWAkC33OVbCALbsxNXI48AF1_Y",
-  "authDomain": "bulsutwo.firebaseapp.com",
-  "databaseURL": "https://bulsutwo-default-rtdb.firebaseio.com/",
-  "storageBucket": "gs://bulsutwo.appspot.com"
+   'apiKey': "AIzaSyBfTREYKsWAkC33OVbCALbsxNXI48AF1_Y",
+  'authDomain': "bulsutwo.firebaseapp.com",
+  'databaseURL': "https://bulsutwo-default-rtdb.firebaseio.com",
+  'projectId': "bulsutwo",
+  'storageBucket': "bulsutwo.appspot.com",
+  'messagingSenderId': "325420643401",
+  'appId': "1:325420643401:web:d55ff37562b147bd70bb98"
 }
 
 cred = credentials.Certificate('main_app/serviceAccountKey.json')
