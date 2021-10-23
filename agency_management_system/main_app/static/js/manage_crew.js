@@ -33,7 +33,7 @@ $("#addCrewForm").submit(function( event ) {
 
     formData.append('age', $('#age').val());
     formData.append('lastName', $('#lastName').val());
-    formData.append('lastName', $('#birthdate').val());
+    formData.append('birthdate', $('#birthdate').val());
 
     $.ajax({
         url: '//',
