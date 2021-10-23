@@ -56,6 +56,12 @@ $("#addCrewForm").submit(function( event ) {
                     title: 'Added Crew Successfully',
                   })
             }
+            else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'This Position is Occupied',
+                  })
+            }
         },
         error: function(data){
             Swal.fire({

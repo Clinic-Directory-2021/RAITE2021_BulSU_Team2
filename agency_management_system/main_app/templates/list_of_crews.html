@@ -21,7 +21,7 @@
                 {% for crew in ship_crews%}
                 <tr>
                     <td>{{crew.first_name}} {{crew.middle_name}} {{crew.last_name}}</td>
-                    <td><img src="../static/images/idea.png" alt=""></td>
+                    <td><img src="{{crew.crew_img_url}}" alt="" width="80" ></td>
                     <td>{{crew.age}}</td>
                     <td>{{crew.gender}}</td>
                     <td>{{crew.birthdate}}</td>

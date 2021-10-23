@@ -43,7 +43,18 @@ def list_of_crews(request):
         }
     return render(request,'list_of_crews.html',data)
 def manage_crews(request):
-    return render(request,'manage_crew.html')
+    ship_crews = db.collection('ship_crews').get()
+
+    crew_data = []
+
+    for crew in ship_crews:
+        value = crew.to_dict()
+        crew_data.append(value)
+
+        data = {
+            'ship_crews': crew_data, 
+        }
+    return render(request,'manage_crew.html', data)
 def add_crews(request):
     return render(request,'add_crew.html')
 
@@ -75,15 +86,89 @@ def add_crews_firebase(request):
         doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
 
 
-        # limitations = db.collection('ship_crew_limitation').get()
+        limitations = db.collection('ship_crew_limitation').get()
 
-        # for limitation in limitations:
-        #     value = limitation.to_dict()
-        #     if rank == 'master_captain':
-        #         if value['master_captain'] != '0':
-        #             return HttpResponse('Sorry Master Position Has already have A crew')
+        for limitation in limitations:
+            value = limitation.to_dict()
+            if rank == 'master_captain':
+                if value['master_captain'] != '0':
+                    return HttpResponse('Sorry Master Position Has already have A crew')
 
+            if rank == 'chief_mate':
+                if value['chief_mate'] != '0':
+                    return HttpResponse('Sorry Master Position Has already have A crew')
 
+            if rank == 'second_mate':
+                if value['second_mate'] != '0':
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'third_mate':
+                if value['third_mate'] != '0':
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'deck_cadet':
+                if int(value['deck_cadet']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            if rank == 'chief_engineer':
+                if int(value['chief_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'second_engineer':
+                if int(value['second_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'third_engineer':
+                if int(value['third_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'fourth_engineer':
+                if int(value['fourth_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+                
+            if rank == 'engine_cadet':
+                if int(value['engine_cadet']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'electrician':
+                if int(value['electrician']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'boatswain':
+                if int(value['boatswain']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'pump_man':
+                if int(value['pump_man']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'able_bodied_seaman':
+                if int(value['able_bodied_seaman']) >= 4:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'ordinary_seaman':
+                if int(value['ordinary_seaman']) >= 4:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'fitter':
+                if int(value['fitter']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'oiler':
+                if int(value['oiler']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'wiper':
+                if int(value['wiper']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'chief_cook':
+                if int(value['chief_cook']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'steward':
+                if int(value['steward']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+                    
         doc_ref.set({
             'crew_img_url' : storage.child(img_file_directory).get_url(user['localId']),
             'crew_img_directory' : img_file_directory,
