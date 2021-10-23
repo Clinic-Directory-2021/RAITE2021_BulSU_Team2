@@ -62,7 +62,7 @@ $("#addCrewForm").submit(function( event ) {
                   icon: 'error',
                   title: 'Oops...',
                 })
-        }
+        },
 
       });
 

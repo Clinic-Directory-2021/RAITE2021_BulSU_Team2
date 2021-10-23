@@ -60,7 +60,7 @@ def add_crews_firebase(request):
         
 
         # register default crew and password to firebase auth
-        user = auth.create_user_with_email_and_password('first_name'+'@gmail.com', 'password')
+        user = auth.create_user_with_email_and_password(first_name+'@gmail.com', 'password')
 
         # img_file_directory = user['localId']+"/crew_images/"+ fileName
 
