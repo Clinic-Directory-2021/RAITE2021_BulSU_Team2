@@ -74,7 +74,7 @@ $("#addCrewForm").submit(function( event ) {
 
   }); 
 
-function toEditCrew(crew_id_clicked, age, gender, bdate , fName, Lname, Mname , img_url){
+function toEditCrew(crew_id_clicked, age, gender, bdate ,rank, fName, Lname, Mname , img_url){
 
     $('#editPreview').attr('src', img_url);
 
