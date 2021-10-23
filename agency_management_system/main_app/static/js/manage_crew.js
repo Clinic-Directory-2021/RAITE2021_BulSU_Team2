@@ -3,7 +3,7 @@ $(function(){
       var input = this;
       var url = $(this).val();
       var ext = url.substring(url.lastIndexOf('.') + 1).toLowerCase();
-      if (input.files && input.files[0]&& (ext == "png"  ext == "jpeg"  ext == "jpg")) 
+      if (input.files && input.files[0]&& (ext == "png" || ext == "jpeg" || ext == "jpg")) 
        {
           var reader = new FileReader();
 
@@ -11,14 +11,14 @@ $(function(){
              $('#preview_image').attr('src', e.target.result);
           }
          reader.readAsDataURL(input.files[0]);
-      }
-      else
+      }else
       {
         $('#preview_image').attr('src', '../static/images/map.jpg');
       }
-    });
+      
+       });
 
-  });
+     });
 
 $("#addCrewForm").submit(function( event ) {
     var formData = new FormData();
