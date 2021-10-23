@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %} 
-{% csrf_token %}
+
 <div class="p-5 mt-20">
     <h1>Manage Crews</h1>
     <button class="button primary" style="float: right;"  onclick="toAddCrew()"><icon class="mif-add icon mr-3"></icon>Add Crew</button>
@@ -39,6 +39,7 @@
                     </td>
                 </tr>
                 {% endfor %}
+                {% csrf_token %}
             </tbody>
     </table>
 </div>

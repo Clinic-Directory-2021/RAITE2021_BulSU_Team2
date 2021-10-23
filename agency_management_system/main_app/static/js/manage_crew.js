@@ -74,16 +74,17 @@ $("#addCrewForm").submit(function( event ) {
 
   }); 
 
-function toEditCrew(crew_id){
+function toEditCrew(crew_id_clicked){
 
-    var formData = new FormData();
-
-    formData.append('crew_id', crew_id);
-    formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+    // formData.append('crew_id', crew_id);
+    // formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
     $.ajax({
         type: "POST",
         url: '/editCrewPage/',
-        data: formData,
+        data: {
+            crew_id: crew_id_clicked, 
+            csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
+        },
         success: function (data) {
             window.location.href = '/edit_crew/';
         },
