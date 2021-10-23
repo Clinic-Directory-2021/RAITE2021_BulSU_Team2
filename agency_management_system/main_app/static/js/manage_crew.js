@@ -38,13 +38,28 @@ $("#addCrewForm").submit(function( event ) {
     formData.append('birthdate', $('#birthdate').val());
 
     formData.append('rank', $('#rank').find(":selected").text());
+    e.preventDefault();
+  console.log("1");
+  
     $.ajax({
+        type: "POST",
         url: '//',
         data: formData,
         enctype: 'multipart/form-data',
         success: function (data) {
-
+            if(data == 'Success'){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Added Crew Successfully',
+                  })
+            }
         },
+        error: function(data){
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                })
+        }
 
       });
 
