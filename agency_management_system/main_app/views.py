@@ -339,3 +339,4 @@ def editCrewPage(request):
             })
 
         doc_ref_limitation.update({rank: firestore.Increment(1)})
+        return HttpResponse('Success')

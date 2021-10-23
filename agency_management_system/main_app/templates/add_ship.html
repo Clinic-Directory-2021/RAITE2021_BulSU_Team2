@@ -3,6 +3,8 @@
 <br> 
 <br>
 <br>
+<form id="addShip" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
 <div class="mt-10"> 
     <h1>Add ship</h1>
     <div style="display: flex;">
@@ -11,9 +13,9 @@
                 <div class="card-header">
                 </div>
                 <div class="card-content p-2">
-                    <img src="http://lorempixel.com/1000/600/" style="width: 100%">
+                    <img src="http://lorempixel.com/1000/600/" style="width: 100%" id="previewShip">
                 </div>
-                <input type="file" data-role="file" data-prepend="Change Picture">    
+                <input type="file" data-role="file" data-prepend="Change Picture" id="shipImage">    
             </div>
         </div>
         <div style="width: 60%;">
@@ -27,23 +29,23 @@
                 <tr>
                     <td>
                         <p><b>Ship name</b></p>
-                        <input type="text" data-role="input" class="" placeholder="Enter ship name">
+                        <input type="text" data-role="input" class="" placeholder="Enter ship name" id="ship_name">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <p><b>Speed</b></p>
-                        <input type="text" data-role="input" class="" placeholder="Enter sheep speed">
+                        <input type="text" data-role="input" class="" placeholder="Enter sheep speed" id="ship_speed">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <p><b>Address of Destination</b></p>
-                        <input type="text" data-role="input" class="" placeholder="Enter address of destination">
+                        <input type="text" data-role="input" class="" placeholder="Enter address of destination" id="ship_destination">
                     </td>
                 </tr>
                     <td>
-                        <button class="button primary">Submit</button>
+                        <button type="submit" class="button primary">Submit</button>
                         <button class="button warning">Cancel</button>
                     </td>
                 </tr>
@@ -52,5 +54,6 @@
         </div>
     </div>
 </div>
+</form>
 
  {% endblock content %}
