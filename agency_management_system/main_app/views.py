@@ -14,7 +14,7 @@ config = {
   'projectId': "bulsutwo",
   'storageBucket': "bulsutwo.appspot.com",
   'messagingSenderId': "325420643401",
-  'appId': "1:325420643401:web:d55ff37562b147bd70bb98"
+  'appId': "1:325420643401:web:d55ff37562b147bd70bb98",
 }
 
 cred = credentials.Certificate('main_app/serviceAccountKey.json')
