@@ -31,7 +31,7 @@ def index(request):
     return render(request,'index.html')
 def list_of_crews(request):
     ship_crews = db.collection('ship_crews').get()
-
+    
     crew_data = []
 
     for crew in ship_crews:
@@ -72,6 +72,15 @@ def add_crews_firebase(request):
 
         fileName = request.POST.get('fileName')
         crewImage = request.FILES['crewImage']
+
+        
+
+        
+
+        
+
+        doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
+
 
         limitations = db.collection('ship_crew_limitation').get()
 
@@ -156,6 +165,8 @@ def add_crews_firebase(request):
                 if int(value['steward']) >= 3:
                     return HttpResponse('Sorry Master Position Has already have A crew')
 
+
+
         # register default crew and password to firebase auth
         user = auth.create_user_with_email_and_password(first_name+'@gmail.com', 'password')
 
@@ -165,11 +176,6 @@ def add_crews_firebase(request):
         storage.child(img_file_directory).put(crewImage)
 
         doc_ref = db.collection('ship_crews').document(user['localId'])
-
-        doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
-
-
-        
 
         doc_ref.set({
             'crew_img_url' : storage.child(img_file_directory).get_url(user['localId']),
