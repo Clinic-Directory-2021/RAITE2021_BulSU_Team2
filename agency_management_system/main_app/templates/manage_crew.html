@@ -1,3 +1,37 @@
 {% extends 'base.html' %}
 {% block content %} 
+<div class="p-5 mt-20">
+    <table class="table striped table-border mt-4"
+    data-role="table"
+    data-rows-steps="5, 10"
+    data-rows="5">
+        <thead>
+            <tr class="bg-grayWhite">
+                <th>Name</th>
+                <th>Photo</th>
+                <th>Age</th>
+                <th>Address</th>
+                <th>Birth Date</th>
+                <th>Rank</th>
+                <th>Tools</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Active</td>
+                    <td><img src="../static/images/idea.png" alt=""></td>
+                    <td>Divina Santos</td>
+                    <td>Female</td>
+                    <td>4</td>
+                    <td>Campupot</td>
+                    <td>
+                        <button class="button success mif-pencil icon" data-role="popover" data-popover-text="Edit"
+                        data-popover-position="top" data-popover-hide="1000"></button>
+                        <button class="button secondary mif-bin "  data-role="popover" data-popover-text="Delete"
+                        data-popover-position="top" data-popover-hide="1000"></button>
+                    </td>
+                </tr>
+            </tbody>
+    </table>
+</div>
 {% endblock content %}
