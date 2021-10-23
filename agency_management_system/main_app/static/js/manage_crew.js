@@ -20,6 +20,8 @@ $(function(){
 
      });
 
+
+
 $("#addCrewForm").submit(function( event ) {
     var formData = new FormData();
 
@@ -35,6 +37,7 @@ $("#addCrewForm").submit(function( event ) {
     formData.append('lastName', $('#lastName').val());
     formData.append('birthdate', $('#birthdate').val());
 
+    formData.append('rank', $('#rank').find(":selected").text());
     $.ajax({
         url: '//',
         data: formData,

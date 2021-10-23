@@ -5,6 +5,8 @@ from firebase_admin import firestore
 
 import pyrebase
 
+from django.http import HttpResponse
+
 config = {
   "apiKey": "AIzaSyBfTREYKsWAkC33OVbCALbsxNXI48AF1_Y",
   "authDomain": "bulsutwo.firebaseapp.com",
