@@ -37,7 +37,7 @@ $("#addCrewForm").submit(function( event ) {
     formData.append('lastName', $('#lastName').val());
     formData.append('birthdate', $('#birthdate').val());
 
-    formData.append('rank', $('#rank').find(":selected").text());
+    formData.append('rank', $('#rank').find(":selected").val());
     formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
     event.preventDefault();
   console.log("1");
