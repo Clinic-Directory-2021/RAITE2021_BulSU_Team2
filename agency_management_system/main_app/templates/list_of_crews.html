@@ -1,19 +1,19 @@
 {% extends 'base.html' %}
 {% block content %} 
 <div class="p-5 mt-20">
-    <table class="table striped table-border mt-4"
+    <table class="table striped table-border mt-4 bg-steel"
     data-role="table"
     data-rows-steps="5, 10"
     data-rows="5">
         <thead>
-            <tr class="bg-grayWhite">
-                <th>Name</th>
-                <th>Photo</th>
-                <th>Age</th>
-                <th>Address</th>
-                <th>Birth Date</th>
-                <th>Rank</th>
-                <th>Tools</th>
+            <tr class="bg-grayWhite fg-white">
+                <th class="fg-white">Name</th>
+                <th class="fg-white">Photo</th>
+                <th class="fg-white">Age</th>
+                <th class="fg-white" >Address</th>
+                <th class="fg-white">Birth Date</th>
+                <th class="fg-white">Rank</th>
+                <th class="fg-white">Tools</th>
             </tr>
             </thead>
             <tbody>
@@ -25,10 +25,73 @@
                     <td>4</td>
                     <td>Campupot</td>
                     <td><button class="button primary mif-eye icon" data-role="popover" data-popover-text="View"
-                        data-popover-position="top" data-popover-hide="1000"></button></td>
+                        data-popover-position="top" data-popover-hide="1000" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></button></td>
                 </tr>
             </tbody>
     </table>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Crew Profile</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="display: flex;">
+            <div style="width: 50%;">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-content p-2">
+                        <img src="http://lorempixel.com/1000/600/" style="width: 100%">
+                    </div>
+                    <table class="table striped" style="text-align: center;">
+                        <tbody>
+                            <tr>
+                                <td><strong>Name</strong></td>
+                                <td>Bill</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Rank</strong></td>
+                                <td>Bill</td>
+                            </tr>
+                            </tbody>
+                    </table>    
+                </div>
+            </div>
+             <div style="width: 50%;">
+                <table class="table striped" style="text-align: center;">
+                    <thead>
+                        <tr class="bg-grayWhite">
+                            <td colspan="2">Contact Details</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Age</strong></td>
+                            <td>Bill</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gender</strong></td>
+                            <td>Bill</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Address</strong></td>
+                            <td>Bill</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Birth Date</strong></td>
+                            <td>Bill</td>
+                        </tr>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
 {% endblock content %}
