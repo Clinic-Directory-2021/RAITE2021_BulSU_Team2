@@ -38,14 +38,17 @@ $("#addCrewForm").submit(function( event ) {
     formData.append('birthdate', $('#birthdate').val());
 
     formData.append('rank', $('#rank').find(":selected").text());
-    e.preventDefault();
+    formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+    event.preventDefault();
   console.log("1");
-  
+
     $.ajax({
         type: "POST",
-        url: '//',
+        url: '/add_crews_firebase/',
         data: formData,
         enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
         success: function (data) {
             if(data == 'Success'){
                 Swal.fire({

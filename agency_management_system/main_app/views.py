@@ -64,8 +64,8 @@ def add_crews_firebase(request):
 
         img_file_directory = user['localId']+"/crew_images/"+ fileName
 
-        #upload product image
-        storage.child(img_file_directory).put(crewImage, user['localId'])
+        # #upload product image
+        # storage.child(img_file_directory).put(crewImage, user['localId'])
 
         doc_ref = db.collection('ship_crews').document(user['localId'])
 
