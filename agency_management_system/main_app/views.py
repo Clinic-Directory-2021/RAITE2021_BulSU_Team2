@@ -45,7 +45,7 @@ def list_of_crews(request):
     
     return render(request,'list_of_crews.html',data)
 def manage_crews(request):
-    ship_crews = db.collection('ships').get()
+    ship_crews = db.collection('ship_crews').get()
 
     crew_data = []
 
@@ -54,7 +54,7 @@ def manage_crews(request):
         crew_data.append(value)
 
         data = {
-            'ships': crew_data, 
+            'crew': crew_data, 
         }
     return render(request,'manage_crew.html', data)
 def add_crews(request):
