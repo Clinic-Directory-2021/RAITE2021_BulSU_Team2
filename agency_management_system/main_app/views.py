@@ -193,7 +193,14 @@ def add_crews_firebase(request):
         return HttpResponse('Success')
 
 def edit_crew(request):
-    return render(request,'edit_crew.html')
+    if 'crew_id' in request.session:
+        crew_id = request.session['crew_id']
+
+        data = {
+            'crew_id': crew_id,
+        }
+
+        return render(request,'edit_crew.html', data)
 def list_of_ship(request):
     return render(request,'list_of_ship.html')
 def manage_ship(request):

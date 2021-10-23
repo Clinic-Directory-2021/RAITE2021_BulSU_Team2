@@ -79,13 +79,11 @@ function toEditCrew(crew_id){
     var formData = new FormData();
 
     formData.append('crew_id', crew_id);
-
+    formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
     $.ajax({
         type: "POST",
         url: '/editCrewPage/',
         data: formData,
-        processData: false,
-        contentType: false,
         success: function (data) {
             window.location.href = '/edit_crew/';
         },
