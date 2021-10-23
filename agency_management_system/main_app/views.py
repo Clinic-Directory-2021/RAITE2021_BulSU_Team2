@@ -67,8 +67,8 @@ def add_crews_firebase(request):
         # #upload product image
         # storage.child(img_file_directory).put(crewImage, user['localId'])
 
-        doc_ref = db.collection('ship_crews').document()
-        
+        doc_ref = db.collection('ship_crews').document(user['localId'])
+
         # doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
 
 
@@ -89,6 +89,7 @@ def add_crews_firebase(request):
             'gender': gender,
             'age': age,
             'birthdate': birthdate,
+            'crew_id': user['localId'],
             })
 
         # doc_ref_limitation.update({rank: firestore.Increment(1)})
