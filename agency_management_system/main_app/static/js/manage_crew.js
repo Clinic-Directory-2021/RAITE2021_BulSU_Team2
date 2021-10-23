@@ -74,31 +74,20 @@ $("#addCrewForm").submit(function( event ) {
 
   }); 
 
-function toEditCrew(crew_id_clicked){
+function toEditCrew(crew_id_clicked, age, gender, bdate , fName, Lname, Mname , img_url){
 
-    // formData.append('crew_id', crew_id);
-    // formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
-    $.ajax({
-        type: "POST",
-        url: '/editCrewPage/',
-        data: {
-            crew_id: crew_id_clicked, 
-            csrfmiddlewaretoken: $("input[name='csrfmiddlewaretoken']").val(),
-        },
-        success: function (data) {
-            window.location.href = '/edit_crew/';
-        },
-        error: function(data){
-            Swal.fire({
-                  icon: 'error',
-                  title: 'Oops...',
-                })
-        },
+    $('#editPreview').attr('src', img_url);
 
-      });
+    $('#editFname').val(fName);
+    $('#editGender').val(gender);
+    $('#editMname').val(Mname);
 
+    $('#editAge').val(age);
+
+    $('#editLname').val(Lname);
+
+    $('#editBirthdate').val(bdate);
     
-
 
 
 }

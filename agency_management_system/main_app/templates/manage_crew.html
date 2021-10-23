@@ -33,7 +33,7 @@
                     <td>{{crew.rank}}</td>
                     <td>
                         <button class="button success mif-pencil icon" data-role="popover" data-popover-text="Edit"
-                        data-popover-position="top" data-popover-hide="1000" onclick="toEditCrew('{{crew.crew_id}}')" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
+                        data-popover-position="top" data-popover-hide="1000" onclick="toEditCrew('{{crew.crew_id}}', '{{crew.age}}','{{crew.gender}}', '{{crew.birthdate}}' , '{{crew.rank}}' , '{{crew.first_name}}', '{{crew.last_name}}', '{{crew.middle_name}}' , '{{crew.crew_img_url}}')" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
                         <button class="button secondary mif-bin "  data-role="popover" data-popover-text="Delete"
                         data-popover-position="top" data-popover-hide="1000"></button>
                     </td>
@@ -58,9 +58,9 @@
                     <div class="card-header">
                     </div>
                     <div class="card-content p-2">
-                        <img src="http://lorempixel.com/1000/600/" style="width: 100%">
+                        <img src="http://lorempixel.com/1000/600/" style="width: 100%" id="editPreview">
                     </div>
-                    <input type="file" data-role="file" data-prepend="Change Picture">    
+                    <input type="file" data-role="file" data-prepend="Change Picture" id="editCrewImage">    
                 </div>
             </div>
             <div style="width: 60%;">
@@ -74,31 +74,31 @@
                     <tr>
                         <td>
                             <p><b>First Name</b></p>
-                            <input type="text" data-role="input" class="" placeholder="Enter first name">
+                            <input type="text" data-role="input" class="" placeholder="Enter first name" id="editFname">
                         </td>
                         <td>
                             <p><b>Gender</b></p>
-                            <input type="email" data-role="input" class="" placeholder="Enter gender">
+                            <input type="email" data-role="input" class="" placeholder="Enter gender" id="editGender">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p><b>Midle Name</b></p>
-                            <input type="text" data-role="input" class="" placeholder="Enter middle name">
+                            <input type="text" data-role="input" class="" placeholder="Enter middle name" id="editMname">
                         </td>
                         <td>
                             <p><b>Age</b></p>
-                            <input type="text" data-role="input" class="" placeholder="Enter age">
+                            <input type="text" data-role="input" class="" placeholder="Enter age" id="editAge">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <p><b>Last Name</b></p>
-                            <input type="text" data-role="input" class="" placeholder="Enter last name">
+                            <input type="text" data-role="input" class="" placeholder="Enter last name" id="editLname">
                         </td>
                         <td>
                             <p><b>Birthd Date</b></p>
-                            <input type="text" data-role="input" class="" placeholder="Enter birthdate">
+                            <input type="text" data-role="input" class="" placeholder="Enter birthdate" id="editBirthdate">
                         </td>
                     </tr>
                     <tr>
