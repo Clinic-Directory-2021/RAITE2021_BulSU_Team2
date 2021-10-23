@@ -1,35 +1,34 @@
 {% extends 'base.html' %}
 {% block content %} 
 <div class="p-5 mt-20">
-    <h1>List of Crews</h1>
+    <h1>Manage ship</h1>
+    <button class="button primary" style="float: right;"  onclick="toAddShip()"><icon class="mif-add icon mr-3"></icon>Add Ship </button>
+    <br>
+    <br>
     <table class="table striped table-border mt-4 bg-steel"
     data-role="table"
     data-rows-steps="5, 10"
     data-rows="5">
         <thead>
             <tr class="bg-grayWhite fg-white">
-                <th class="fg-white">Name</th>
+                <th class="fg-white">Ship Name</th>
                 <th class="fg-white">Photo</th>
-                <th class="fg-white">Age</th>
-                <th class="fg-white" >Address</th>
-                <th class="fg-white">Birth Date</th>
-                <th class="fg-white">Rank</th>
+                <th class="fg-white">Ship Speed</th>
                 <th class="fg-white">Tools</th>
             </tr>
             </thead>
             <tbody>
-                {% for crew in ship_crews%}
                 <tr>
-                    <td>{{crew.first_name}} {{crew.middle_name}} {{crew.last_name}}</td>
+                    <td>Ship Name</td>
                     <td><img src="../static/images/idea.png" alt=""></td>
-                    <td>{{crew.age}}</td>
-                    <td>{{crew.gender}}</td>
-                    <td>{{crew.birthdate}}</td>
-                    <td>{{crew.rank}}</td>
-                    <td><button class="button primary mif-eye icon" data-role="popover" data-popover-text="View"
-                        data-popover-position="top" data-popover-hide="1000" data-bs-toggle="modal" data-bs-target="#exampleModal"></button></button></td>
+                    <td>Ship Speed</td>
+                    <td>
+                        <button class="button success mif-pencil icon" data-role="popover" data-popover-text="Edit"
+                        data-popover-position="top" data-popover-hide="1000" onclick="toEditShip()"></button>
+                        <button class="button secondary mif-bin "  data-role="popover" data-popover-text="Delete"
+                        data-popover-position="top" data-popover-hide="1000"></button>
+                    </td>
                 </tr>
-                {% endfor %}
             </tbody>
     </table>
 </div>
@@ -48,19 +47,7 @@
                     </div>
                     <div class="card-content p-2">
                         <img src="http://lorempixel.com/1000/600/" style="width: 100%">
-                    </div>
-                    <table class="table striped" style="text-align: center;">
-                        <tbody>
-                            <tr>
-                                <td><strong>Name</strong></td>
-                                <td>Bill</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Rank</strong></td>
-                                <td>Bill</td>
-                            </tr>
-                            </tbody>
-                    </table>    
+                    </div>  
                 </div>
             </div>
              <div style="width: 50%;">
@@ -72,22 +59,13 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>Age</strong></td>
+                            <td><strong>Ship Name</strong></td>
                             <td>Bill</td>
                         </tr>
                         <tr>
-                            <td><strong>Gender</strong></td>
+                            <td><strong>Ship Speed</strong></td>
                             <td>Bill</td>
                         </tr>
-                        <tr>
-                            <td><strong>Address</strong></td>
-                            <td>Bill</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Birth Date</strong></td>
-                            <td>Bill</td>
-                        </tr>
-                        </tbody>
                 </table>
             </div>
         </div>

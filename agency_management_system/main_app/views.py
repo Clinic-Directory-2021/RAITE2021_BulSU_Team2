@@ -23,10 +23,29 @@ storage = firebase.storage()
 def index(request):
     return render(request,'index.html')
 def list_of_crews(request):
-    return render(request,'list_of_crews.html')
+    ship_crews = db.collection('ship_crews').get()
+
+    crew_data = []
+
+    for crew in ship_crews:
+        value = crew.to_dict()
+        crew_data.append(value)
+
+        data = {
+            'ship_crews': crew_data, 
+        }
+    return render(request,'list_of_crews.html',data)
 def manage_crews(request):
     return render(request,'manage_crew.html')
 def add_crews(request):
     return render(request,'add_crew.html')
 def edit_crew(request):
     return render(request,'edit_crew.html')
+def list_of_ship(request):
+    return render(request,'list_of_ship.html')
+def manage_ship(request):
+    return render(request,'manage_ship.html')
+def add_ship(request):
+    return render(request,'add_ship.html')
+def edit_ship(request):
+    return render(request,'edit_ship.html')
