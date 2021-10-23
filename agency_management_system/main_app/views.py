@@ -69,7 +69,7 @@ def add_crews_firebase(request):
 
         doc_ref = db.collection('ship_crews').document(user['localId'])
 
-        # doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
+        doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
 
 
         # limitations = db.collection('ship_crew_limitation').get()
@@ -92,7 +92,7 @@ def add_crews_firebase(request):
             'crew_id': user['localId'],
             })
 
-        # doc_ref_limitation.update({rank: firestore.Increment(1)})
+        doc_ref_limitation.update({rank: firestore.Increment(1)})
         return HttpResponse('Success')
 
 def edit_crew(request):
