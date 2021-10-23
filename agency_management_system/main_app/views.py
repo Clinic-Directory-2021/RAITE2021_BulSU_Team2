@@ -202,3 +202,7 @@ def add_ship(request):
     return render(request,'add_ship.html')
 def edit_ship(request):
     return render(request,'edit_ship.html')
+
+def editCrewPage(request):
+    request.session['crew_id_edit'] = request.POST.get('crew_id')
+    return HttpResponse('OKAY')

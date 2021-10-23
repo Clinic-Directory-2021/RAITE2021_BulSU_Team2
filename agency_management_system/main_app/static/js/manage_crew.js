@@ -74,8 +74,34 @@ $("#addCrewForm").submit(function( event ) {
 
   }); 
 
-function toEditCrew(){
-    window.location.href = '/edit_crew/';
+function toEditCrew(crew_id){
+
+    var formData = new FormData();
+
+    formData.append('crew_id', crew_id);
+
+    $.ajax({
+        type: "POST",
+        url: '/editCrewPage/',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            window.location.href = '/edit_crew/';
+        },
+        error: function(data){
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                })
+        },
+
+      });
+
+    
+
+
+
 }
 function toAddCrew(){
     window.location.href = '/add_crew/';
