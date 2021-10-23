@@ -65,11 +65,11 @@ def add_crews_firebase(request):
         img_file_directory = user['localId']+"/crew_images/"+ fileName
 
         #upload product image
-        storage.child(img_file_directory).put(crewImage, user['localId'])
+        storage.child(img_file_directory).put(crewImage)
 
         doc_ref = db.collection('ship_crews').document(user['localId'])
 
-        doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
+        # doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
 
 
         # limitations = db.collection('ship_crew_limitation').get()
