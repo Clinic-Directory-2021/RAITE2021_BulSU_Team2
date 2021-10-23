@@ -60,6 +60,8 @@
           <h5 class="modal-title" id="exampleModalLabel">Crew Profile</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
+        <form id="editCrewForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
         <div class="modal-body" style="display: flex;">
             <div style="width: 20%;">
                 <div class="card">
@@ -112,7 +114,7 @@
                     <tr>
                         <td>
                             <p><b>Rank</b></p>
-                            <select data-role="select">
+                            <select data-role="select"  id="editRank">
                                 <option value="master">Master/Captain</option>
                                 <option value="chief_mate">Chief Mate</option>
                                 <option value="second_mate">Second Mate</option>
@@ -141,7 +143,7 @@
                         </td> 
                     <tr>
                         <td>
-                            <button class="button primary">Submit</button>
+                            <button type="submit" class="button primary">Submit</button>
                             <button class="button warning">Cancel</button>
                         </td>
                     </tr>
@@ -149,6 +151,7 @@
                 </table>
             </div>
         </div>
+    </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
         </div>

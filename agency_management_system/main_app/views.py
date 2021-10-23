@@ -73,6 +73,8 @@ def add_crews_firebase(request):
         fileName = request.POST.get('fileName')
         crewImage = request.FILES['crewImage']
 
+        lastName = request.POST.get('lastName')
+
         
 
         
@@ -182,6 +184,7 @@ def add_crews_firebase(request):
             'crew_img_directory' : img_file_directory,
             'first_name': first_name,
             'middle_name': middle_name,
+            'last_name': lastName,
             'gender': gender,
             'age': age,
             'birthdate': birthdate,
@@ -212,6 +215,127 @@ def edit_ship(request):
 
 def editCrewPage(request):
     if request.method == 'POST':
-        crew_id = request.POST.get('crew_id')
-        request.session['crew_id_edit'] = crew_id
-        return HttpResponse('OKAY')
+        first_name = request.POST.get('firstName')
+        middle_name = request.POST.get('middleName')
+        gender = request.POST.get('gender')
+        age = request.POST.get('age')
+        birthdate = request.POST.get('birthdate')
+        rank = request.POST.get('rank')
+
+        fileName = request.POST.get('fileName')
+        crewImage = request.FILES['crewImage']
+
+        lastName = request.POST.get('lastName')
+
+        doc_ref_limitation = db.collection('ship_crew_limitation').document('aAYLxdGLmHVs3Yoo12au')
+
+
+        limitations = db.collection('ship_crew_limitation').get()
+
+        for limitation in limitations:
+            value = limitation.to_dict()
+            if rank == 'master_captain':
+                if int(value['master_captain']) > 0:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'chief_mate':
+                if int(value['chief_mate']) > 0:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'second_mate':
+                if int(value['second_mate']) > 0:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'third_mate':
+                if int(value['third_mate']) > 0:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'deck_cadet':
+                if int(value['deck_cadet']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            if rank == 'chief_engineer':
+                if int(value['chief_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'second_engineer':
+                if int(value['second_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'third_engineer':
+                if int(value['third_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'fourth_engineer':
+                if int(value['fourth_engineer']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+                
+            if rank == 'engine_cadet':
+                if int(value['engine_cadet']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'electrician':
+                if int(value['electrician']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'boatswain':
+                if int(value['boatswain']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'pump_man':
+                if int(value['pump_man']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'able_bodied_seaman':
+                if int(value['able_bodied_seaman']) >= 4:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'ordinary_seaman':
+                if int(value['ordinary_seaman']) >= 4:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'fitter':
+                if int(value['fitter']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'oiler':
+                if int(value['oiler']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'wiper':
+                if int(value['wiper']) >= 2:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+            if rank == 'chief_cook':
+                if int(value['chief_cook']) >= 1:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+            
+            if rank == 'steward':
+                if int(value['steward']) >= 3:
+                    return HttpResponse('Sorry Master Position Has already have A crew')
+
+
+
+        # register default crew and password to firebase auth
+        user = auth.create_user_with_email_and_password(first_name+'@gmail.com', 'password')
+
+        img_file_directory = user['localId']+"/crew_images/"+ fileName
+
+        #upload product image
+        storage.child(img_file_directory).put(crewImage)
+
+        doc_ref = db.collection('ship_crews').document(user['localId'])
+
+        doc_ref.update({
+            'crew_img_url' : storage.child(img_file_directory).get_url(user['localId']),
+            'crew_img_directory' : img_file_directory,
+            'first_name': first_name,
+            'middle_name': middle_name,
+            'last_name': lastName,
+            'gender': gender,
+            'age': age,
+            'birthdate': birthdate,
+            'rank': rank,
+            'crew_id': user['localId'],
+            })
+
+        doc_ref_limitation.update({rank: firestore.Increment(1)})

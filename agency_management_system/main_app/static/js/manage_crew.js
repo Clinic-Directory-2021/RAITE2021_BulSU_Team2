@@ -91,6 +91,61 @@ function toEditCrew(crew_id_clicked, age, gender, bdate ,rank, fName, Lname, Mna
 
 
 }
+
+$("#editCrewForm").submit(function( event ) {
+    var formData = new FormData();
+
+    var files = $('#editCrewImage')[0].files[0];
+
+    formData.append('crewImage', files);
+    formData.append('fileName', files.name);
+    formData.append('firstName', $('#editFname').val());
+    formData.append('gender', $('#editGender').val());
+    formData.append('middleName', $('#editMname').val());
+
+    formData.append('age', $('#editAge').val());
+    formData.append('lastName', $('#editLname').val());
+    formData.append('birthdate', $('#editBirthdate').val());
+
+    formData.append('rank', $('#editRank').find(":selected").val());
+    formData.append('csrfmiddlewaretoken', $("input[name='csrfmiddlewaretoken']").val());
+    event.preventDefault();
+  console.log("1");
+
+    $.ajax({
+        type: "POST",
+        url: '/editCrewPage/',
+        data: formData,
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        success: function (data) {
+            if(data == 'Success'){
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Added Crew Successfully',
+                  })
+            }
+            else{
+                Swal.fire({
+                    icon: 'error',
+                    title: 'This Position is Occupied',
+                  })
+            }
+        },
+        error: function(data){
+            Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                })
+        },
+
+      });
+
+  }); 
+
+
+
 function toAddCrew(){
     window.location.href = '/add_crew/';
 }
